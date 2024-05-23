@@ -1,5 +1,6 @@
 package org.gxy.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 public class User {
     private Integer id;//主键ID
     private String username;//用户名
+    @JsonIgnore //让springmvc把当前对象转换成json字符串时，忽略password
     private String password;//密码
     private String nickname;//昵称
     private String email;//邮箱

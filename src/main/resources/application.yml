@@ -4,3 +4,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/big_event
     username: postgres
     password: 123456
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰命名和下划线命名的自动转换
