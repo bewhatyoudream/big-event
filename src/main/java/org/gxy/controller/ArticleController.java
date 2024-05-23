@@ -14,15 +14,8 @@ import java.util.Map;
 @RequestMapping("/article")
 public class ArticleController {
     @GetMapping("list")
-    public Result<String> list(@RequestHeader(name = "Authorization") String token, HttpServletResponse response) {
+    public Result<String> list() {
         //验证token
-        try {
-            Map<String, Object> claims = JwtUtil.parseToken(token);
-            return Result.success("所有的文章数据..");
-        } catch (Exception e) {
-            //http响应状态码401
-            response.setStatus(401);
-            return Result.error("未登录");
-        }
+        return Result.success("所有的文章数据..");
     }
 }
