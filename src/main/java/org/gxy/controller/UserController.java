@@ -6,6 +6,7 @@ import org.gxy.pojo.User;
 import org.gxy.service.UserService;
 import org.gxy.utils.JwtUtil;
 import org.gxy.utils.Md5Util;
+import org.gxy.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -50,11 +51,10 @@ public class UserController {
     }
 
     @GetMapping("userInfo")
-    public Result<User> UserInfo(@RequestHeader(name="Authorization") String token){
+    public Result<User> UserInfo(){
         //根据用户名查询用户
-        Map<String, Object> map = JwtUtil.parseToken(token);
+        Map<String, Object> map = ThreadLocalUtil.get();
         String username = (String) map.get("username");
-
         User user = userService.findByUserName(username);
         return Result.success(user);
     }
