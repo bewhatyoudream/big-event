@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public Result upadte(@RequestBody User user){
+    public Result upadte(@RequestBody @Validated User user){
         userService.update(user);
         return Result.success();
     }
