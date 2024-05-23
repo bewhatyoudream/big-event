@@ -50,13 +50,19 @@ public class UserController {
         return Result.error("密码错误");
     }
 
-    @GetMapping("userInfo")
+    @GetMapping("/userInfo")
     public Result<User> UserInfo(){
         //根据用户名查询用户
         Map<String, Object> map = ThreadLocalUtil.get();
         String username = (String) map.get("username");
         User user = userService.findByUserName(username);
         return Result.success(user);
+    }
+
+    @PutMapping("/update")
+    public Result upadte(@RequestBody User user){
+        userService.update(user);
+        return Result.success();
     }
 
 }
