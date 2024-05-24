@@ -6,6 +6,7 @@ import org.gxy.pojo.Result;
 import org.gxy.service.ArticleService;
 import org.gxy.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -23,7 +24,7 @@ public class ArticleController {
     }
 
     @PostMapping
-    public Result add(@RequestBody Article article){
+    public Result add(@RequestBody @Validated Article article){
         articleService.add(article);
         return Result.success();
     }
