@@ -3,6 +3,7 @@ package org.gxy.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.gxy.pojo.Category;
 
 import java.util.List;
@@ -21,4 +22,8 @@ public interface CategoryMapper {
     //根据id查询
     @Select("select * from category where id = #{id}")
     Category findById(Integer id);
+
+    //更新
+    @Update("update category set category_name = #{categoryName}, category_alias = #{categoryAlias}, update_time = #{updateTime} where id = #{id}")
+    void update(Category category);
 }
